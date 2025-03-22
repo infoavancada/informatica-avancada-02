@@ -1,0 +1,29 @@
+/* nome da coluna - tipo do dado - carcteristica
+varchar -> texto no geral
+integer -> numero  inteiro
+float -> numero quebrados
+boolean -> verdadeiro/falso
+date -> datas
+char -> caractere único
+*/
+
+/* Cria uma tabela no esquema public com nome imovel*/
+create table public.imovel(
+	identificador serial not null primary key,
+	finalidade public.finalidades not null
+);
+
+/* Altera uma tabela alterando uma coluna exemplo: altera coluna valor para tipo float*/
+ALTER TABLE public.imovel ALTER COLUMN valor TYPE float;
+
+/* Altera uma tabela removendo uma coluna exemplo: coluna valor*/
+ALTER TABLE public.imovel DROP COLUMN valor;
+
+/* Altera uma tabela alterando o nome de uma coluna exemplo: coluna valor para valor_aluguel*/
+ALTER TABLE public.imovel RENAME COLUMN valor TO valor_aluguel;
+
+/* Altera uma tabela adicionando uma coluna exemplo: coluna_nova varchar(30) not null*/
+ALTER TABLE public.imovel ADD COLUMN coluna_nova varchar(30) not null;
+
+/* Cria um tipo ENUM(Lista de valores) com o nome finalidades e valores venda e locação */
+CREATE TYPE public.finalidades AS ENUM ('Venda', 'Locação');
